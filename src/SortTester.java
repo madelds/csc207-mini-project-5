@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests of Sorter objects.
  *
- * @author Your Name
+ * @author Madel Sibal & Samuel Rebelsky
  */
 public class SortTester {
 
