@@ -5,7 +5,6 @@ import java.util.Comparator;
  *
  * @author Madel Sibal
  */
-
 public class InsertionSort implements Sorter {
 
   // +--------+------------------------------------------------------
@@ -33,6 +32,18 @@ public class InsertionSort implements Sorter {
 
   @Override
   public <T> void sort(T[] values, Comparator<? super T> order) {
-    // STUB
-  } // sort(T[], Comparator<? super T>
+    int len = values.length;
+    
+    for (int i = 1; i < len; i++) {
+      T key = values[i];
+      int j = i - 1;
+      
+      while (j >= 0 && order.compare(values[j], key) > 0) {
+        values[j + 1] = values[j];
+        j--;
+      }
+      
+      values[j + 1] = key;
+    }
+  } // sort(T[], Comparator<? super T>)
 } // class InsertionSort
