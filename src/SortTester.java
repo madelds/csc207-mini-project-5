@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests of Sorter objects.
  *
- * @author Madel Sibal & Samuel Rebelsky
+ * @author Madel Sibal & Samuel A. Rebelsky
  */
 public class SortTester {
 
@@ -43,6 +43,47 @@ public class SortTester {
     String[] expected = { "alpha", "bravo", "charlie", "delta", "foxtrot" };
     sorter.sort(original, (x, y) -> x.compareTo(y));
     assertArrayEquals(original, expected);
-  } // orderedStringTest
+  } // reverseOrderedStringTest
+
+  @Test
+  public void orderedIntegerTest() {
+    Integer[] original = { 1, 2, 3, 4, 5 };
+    Integer[] expected = original.clone();
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  } // orderedIntegerTest
+
+  @Test
+  public void reverseOrderedIntegerTest() {
+    Integer[] original = { 5, 4, 3, 2, 1 };
+    Integer[] expected = { 1, 2, 3, 4, 5 };
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  } // reverseOrderedIntegerTest
+
+  @Test
+  public void emptyArrayTest() {
+    String[] original = {};
+    String[] expected = {};
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  } // emptyArrayTest
+
+  @Test
+  public void duplicateStringTest() {
+    String[] original = { "apple", "banana", "apple", "cherry" };
+    String[] expected = { "apple", "apple", "banana", "cherry" };    sorter.sort(original, (x, y) -> x.compareTo(y));
+
+    assertArrayEquals(original, expected);
+  } // duplicateStringTest
+
+    @Test
+  public void singleElementArrayTest() {
+    // Test sorting an array with a single element. It should remain the same.
+    Integer[] original = { 42 };
+    Integer[] expected = { 42 };
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  }
 
 } // class SortTester
